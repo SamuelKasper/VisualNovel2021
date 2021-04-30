@@ -1,7 +1,4 @@
 declare namespace Template {
-    function Scene(): fS.SceneReturn;
-}
-declare namespace Template {
     export import f = FudgeCore;
     export import fS = FudgeStory;
     let transition: {
@@ -22,17 +19,26 @@ declare namespace Template {
         };
     };
     let characters: {
-        Narrator: {
-            name: string;
-        };
-        CharacterName: {
+        Teacher: {
             name: string;
             origin: f.ORIGIN2D;
             pose: {
                 /**Auflistung der Posen/Emotionen*/
-                normal: string;
+                happy: string;
+                smile: string;
+            };
+        };
+        Josh: {
+            name: string;
+            origin: f.ORIGIN2D;
+            pose: {
+                /**Auflistung der Posen/Emotionen*/
+                happy: string;
                 smile: string;
             };
         };
     };
+}
+declare namespace Template {
+    function Scene(): fS.SceneReturn;
 }

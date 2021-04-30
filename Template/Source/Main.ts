@@ -31,16 +31,22 @@ namespace Template {
 
   //define character
   export let characters = {
-    Narrator: {
-      name: ""
-    },
-
-    CharacterName: {
-      name: "CharacterName",
-      origin: f.ORIGIN2D.BOTTOMRIGHT,
+    Teacher: {
+      name: "Teacher",
+      origin: fS.ORIGIN.BOTTOMRIGHT,
       pose: {
         /**Auflistung der Posen/Emotionen*/
-        normal: "",
+        happy: "Images/Characters/Teacher/HappyResized.png",
+        smile: ""
+      }
+    },
+
+    Josh: {
+      name: "Josh",
+      origin: fS.ORIGIN.BOTTOMRIGHT,
+      pose: {
+        /**Auflistung der Posen/Emotionen*/
+        happy: "Images/Characters/Swordsmen/Happy.png",
         smile: ""
       }
     }
