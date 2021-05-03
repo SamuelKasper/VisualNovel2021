@@ -18,7 +18,7 @@ namespace Template {
     };
     await fS.Speech.hide();
     await fS.Location.show(location.academy);
-    await fS.update(5);
+    await fS.update(1); //5
     await fS.Location.show(location.assembly_hall);
     await fS.update(1);
     await fS.Character.show(characters.Principal, characters.Principal.pose.happy, fS.positions.bottomcenter);

@@ -30,7 +30,11 @@ speech{
   padding-top: 10px;
   padding-left: 10px;
 }
-
-speech.CharacterName name{
+/*Geht irgendwie nicht?*/
+speech.Principal name{
   color: blueviolet;
+}
+
+speech.Principal content{
+  color: white;
 }

@@ -40,7 +40,7 @@ var Template;
     //define character
     Template.characters = {
         Principal: {
-            name: "Principal",
+            name: "Principal: ",
             origin: Template.fS.ORIGIN.BOTTOMCENTER,
             pose: {
                 /**Auflistung der Posen/Emotionen*/
@@ -50,7 +50,7 @@ var Template;
             }
         },
         Josh: {
-            name: "Josh",
+            name: "Josh: ",
             origin: Template.fS.ORIGIN.BOTTOMRIGHT,
             pose: {
                 /**Auflistung der Posen/Emotionen*/
@@ -100,7 +100,7 @@ var Template;
         };
         await Template.fS.Speech.hide();
         await Template.fS.Location.show(Template.location.academy);
-        await Template.fS.update(5);
+        await Template.fS.update(1); //5
         await Template.fS.Location.show(Template.location.assembly_hall);
         await Template.fS.update(1);
         await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.happy, Template.fS.positions.bottomcenter);
