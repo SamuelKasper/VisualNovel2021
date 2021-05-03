@@ -17,15 +17,28 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        assembly_hall: {
+            name: string;
+            background: string;
+        };
+        black: {
+            name: string;
+            background: string;
+        };
+        dojo: {
+            name: string;
+            background: string;
+        };
     };
     let characters: {
-        Teacher: {
+        Principal: {
             name: string;
             origin: f.ORIGIN2D;
             pose: {
                 /**Auflistung der Posen/Emotionen*/
                 happy: string;
-                smile: string;
+                laught: string;
+                serious: string;
             };
         };
         Josh: {

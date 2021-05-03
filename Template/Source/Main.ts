@@ -26,18 +26,31 @@ namespace Template {
     academy: {
       name: "academy",
       background: "Images/Backgrounds/academy.jpg"
+    },
+    assembly_hall: {
+      name: "assembly_hall",
+      background: "Images/Backgrounds/assembly_hall.jpg"
+    },
+    black: {
+      name: "black",
+      background: "Images/Backgrounds/black.png"
+    },
+    dojo: {
+      name: "dojo",
+      background: "Images/Backgrounds/dojo.jpg"
     }
   };
 
   //define character
   export let characters = {
-    Teacher: {
-      name: "Teacher",
-      origin: fS.ORIGIN.BOTTOMRIGHT,
+    Principal: {
+      name: "Principal",
+      origin: fS.ORIGIN.BOTTOMCENTER,
       pose: {
         /**Auflistung der Posen/Emotionen*/
         happy: "Images/Characters/Teacher/HappyResized.png",
-        smile: ""
+        laught: "Images/Characters/Teacher/laughtResized.png",
+        serious: "Images/Characters/Teacher/seriousResized.png"
       }
     },
 
