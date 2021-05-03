@@ -54,7 +54,7 @@ namespace Template {
       }
     },
 
-    Josh: {
+    Swordsmen: {
       name: "Josh: ",
       origin: fS.ORIGIN.BOTTOMRIGHT,
       pose: {

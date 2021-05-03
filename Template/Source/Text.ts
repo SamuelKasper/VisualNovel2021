@@ -7,18 +7,20 @@ namespace Template {
       Teacher: {
         T0000: "Herzlich Willkommen in der Akademie!",
         T0001: "Ich bin der Leiter der Akademie und darf heute die Einführungsveranstallung abhalten.",
-        T0002: "Dann fangen wir mal an."
+        T0002: "Dann fangen wir mal an.",
+        T0003: "So, nachdem ihr nun alle relevanten Information habt können wir endlich anfangen.",
+        T0004: "Teilt euch bitte selbst nach euren Eigenschaften in zwei Gruppen ein."
       },
 
-      CharacterName: {
-        T0000: "Test Text Test Text",
+      Swordsmen: {
+        T0000: "",
         T0001: "",
         T0002: ""
       }
     };
     await fS.Speech.hide();
     await fS.Location.show(location.academy);
-    await fS.update(1); //5
+    await fS.update(1);
     await fS.Location.show(location.assembly_hall);
     await fS.update(1);
     await fS.Character.show(characters.Principal, characters.Principal.pose.happy, fS.positions.bottomcenter);
@@ -27,13 +29,17 @@ namespace Template {
     await fS.Speech.tell(characters.Principal, text.Teacher.T0000); 
     await fS.Speech.tell(characters.Principal, text.Teacher.T0001);
     await fS.Speech.tell(characters.Principal, text.Teacher.T0002);
-    await fS.Character.hide;(characters.Principal);
-    await fS.update(1);
     await fS.Speech.hide();
     await fS.Location.show(location.black);
+    await fS.Character.hide(characters.Principal);
     await fS.update(1);
-    await fS.Text.print("Einige Zeit später...");
+    //await fS.Text.print("Einige Zeit später...");
+    //await fS.update(1);
+    await fS.Location.show(location.assembly_hall);
+    await fS.Character.show(characters.Principal, characters.Principal.pose.serious, fS.positions.bottomcenter);
     await fS.update(1);
+    await fS.Speech.tell(characters.Principal, text.Teacher.T0003);
+    await fS.Speech.tell(characters.Principal, text.Teacher.T0004);
 
 
     

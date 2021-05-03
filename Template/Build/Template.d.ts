@@ -41,7 +41,7 @@ declare namespace Template {
                 serious: string;
             };
         };
-        Josh: {
+        Swordsmen: {
             name: string;
             origin: f.ORIGIN2D;
             pose: {
