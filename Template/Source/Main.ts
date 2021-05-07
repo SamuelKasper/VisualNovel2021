@@ -16,10 +16,10 @@ namespace Template {
   //define sound
   export let sound = {
     //music
-    backgroundTheme: "src",
+    backgroundTheme: "Audio/tetris.mp3",
 
     //sound
-    click: ""
+    click: "Auidio/klopfen.mp3"
   };
 
   export let location = {

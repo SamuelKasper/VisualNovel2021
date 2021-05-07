@@ -1,6 +1,25 @@
 "use strict";
 var Template;
 (function (Template) {
+    async function Decision() {
+        console.log("Desicion");
+        let text = {
+            Teacher: {
+                T0000: "Test"
+            },
+            Swordsmen: {
+                T0000: ""
+            }
+        };
+        await Template.fS.Location.show(Template.location.academy);
+        await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.happy, Template.fS.positions.bottomcenter);
+        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0000);
+        await Template.fS.update(1);
+    }
+    Template.Decision = Decision;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
     Template.f = FudgeCore;
     Template.fS = FudgeStory;
     console.log("Start");
@@ -15,9 +34,9 @@ var Template;
     //define sound
     Template.sound = {
         //music
-        backgroundTheme: "src",
+        backgroundTheme: "Audio/tetris.mp3",
         //sound
-        click: ""
+        click: "Auidio/klopfen.mp3"
     };
     Template.location = {
         academy: {
@@ -102,7 +121,7 @@ var Template;
         };
         await Template.fS.Speech.hide();
         await Template.fS.Location.show(Template.location.academy);
-        await Template.fS.update(2);
+        await Template.fS.update(3);
         await Template.fS.Location.show(Template.location.assembly_hall);
         await Template.fS.update(1);
         await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.happy, Template.fS.positions.bottomcenter);
@@ -128,6 +147,32 @@ var Template;
         await Template.fS.update(2);
         await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0003);
         await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0004);
+        //Ticker Delay
+        Template.fS.Speech.setTickerDelays(3000, 2);
+        //hintergrund Musik einblenden
+        Template.fS.Sound.fade(Template.sound.backgroundTheme, 0.6, 0.1, true);
+        //Decision element
+        let firstDialogueElementAnswer = {
+            iSayMage: "Gruppe der Magier beitreten",
+            iSaySwordsmen: "Gruppe der Swordsmen beitreten"
+        };
+        let firstDialogueElement = await Template.fS.Menu.getInput(firstDialogueElementAnswer, "class");
+        switch (firstDialogueElement) {
+            case firstDialogueElementAnswer.iSayMage:
+                //continue writing on this path
+                Template.fS.Sound.play(Template.sound.click, 1);
+                await Template.fS.Speech.tell(Template.characters.Principal, "Mage Dialog");
+                break;
+            case firstDialogueElementAnswer.iSaySwordsmen:
+                //continue writing on this path
+                Template.fS.Sound.play(Template.sound.click, 1);
+                await Template.fS.Character.show(Template.characters.Swordsmen, Template.characters.Swordsmen.pose.happy, Template.fS.positions.bottomcenter);
+                await Template.fS.update(1);
+                await Template.fS.Speech.tell(Template.characters.Principal, "Swordsmen Dialog");
+                break;
+        }
+        //hintergrund Musik ausblenden
+        Template.fS.Sound.fade(Template.sound.backgroundTheme, 0, 0.1, false);
     }
     Template.Scene = Scene;
 })(Template || (Template = {}));

@@ -20,7 +20,7 @@ namespace Template {
     };
     await fS.Speech.hide();
     await fS.Location.show(location.academy);
-    await fS.update(2);
+    await fS.update(3);
     await fS.Location.show(location.assembly_hall);
     await fS.update(1);
     await fS.Character.show(characters.Principal, characters.Principal.pose.happy, fS.positions.bottomcenter);
@@ -47,7 +47,36 @@ namespace Template {
     await fS.Speech.tell(characters.Principal, text.Teacher.T0003);
     await fS.Speech.tell(characters.Principal, text.Teacher.T0004);
 
+    //Ticker Delay
+    fS.Speech.setTickerDelays(3000, 2);
 
+    //hintergrund Musik einblenden
+    fS.Sound.fade(sound.backgroundTheme, 0.6, 0.1, true);
+
+    //Decision element
+    let firstDialogueElementAnswer = {
+      iSayMage: "Gruppe der Magier beitreten",
+      iSaySwordsmen: "Gruppe der Swordsmen beitreten"
+    };
+
+    let firstDialogueElement = await fS.Menu.getInput(firstDialogueElementAnswer, "class");
+
+    switch(firstDialogueElement){
+      case firstDialogueElementAnswer.iSayMage:
+        //continue writing on this path
+        fS.Sound.play(sound.click,1);
+        await fS.Speech.tell(characters.Principal, "Mage Dialog");
+        break;
+      case firstDialogueElementAnswer.iSaySwordsmen:
+        //continue writing on this path
+        fS.Sound.play(sound.click,1);
+        await fS.Character.show(characters.Swordsmen, characters.Swordsmen.pose.happy, fS.positions.bottomcenter);
+        await fS.update(1);
+        await fS.Speech.tell(characters.Principal, "Swordsmen Dialog");
+        break;
+    }
     
+    //hintergrund Musik ausblenden
+    fS.Sound.fade(sound.backgroundTheme, 0, 0.1, false);
   }
 }
