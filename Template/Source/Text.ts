@@ -45,29 +45,29 @@ namespace Template {
     await fS.Character.show(characters.Principal, characters.Principal.pose.serious, fS.positions.bottomcenter);
     await fS.update(2);
     await fS.Speech.tell(characters.Principal, text.Teacher.T0003);
-    await fS.Speech.tell(characters.Principal, text.Teacher.T0004);
+    await fS.Speech.tell(characters.Principal, text.Teacher.T0004, false); //false macht, das kein extra klick benötigt wird
 
     //Ticker Delay
-    fS.Speech.setTickerDelays(3000, 2);
+    //fS.Speech.setTickerDelays(3000, 2);
 
     //hintergrund Musik einblenden
     fS.Sound.fade(sound.backgroundTheme, 0.6, 0.1, true);
 
     //Decision element
-    let firstDialogueElementAnswer = {
+    let classDesicionAnswer = {
       iSayMage: "Gruppe der Magier beitreten",
       iSaySwordsmen: "Gruppe der Swordsmen beitreten"
     };
 
-    let firstDialogueElement = await fS.Menu.getInput(firstDialogueElementAnswer, "class");
+    let classDesicion = await fS.Menu.getInput(classDesicionAnswer, "class");
 
-    switch(firstDialogueElement){
-      case firstDialogueElementAnswer.iSayMage:
+    switch(classDesicion){
+      case classDesicionAnswer.iSayMage:
         //continue writing on this path
         fS.Sound.play(sound.click,1);
         await fS.Speech.tell(characters.Principal, "Mage Dialog");
         break;
-      case firstDialogueElementAnswer.iSaySwordsmen:
+      case classDesicionAnswer.iSaySwordsmen:
         //continue writing on this path
         fS.Sound.play(sound.click,1);
         await fS.Character.show(characters.Swordsmen, characters.Swordsmen.pose.happy, fS.positions.bottomcenter);

@@ -59,7 +59,7 @@ var Template;
     //define character
     Template.characters = {
         Principal: {
-            name: "Principal: ",
+            name: "Principal",
             origin: Template.fS.ORIGIN.BOTTOMCENTER,
             pose: {
                 /**Auflistung der Posen/Emotionen*/
@@ -146,24 +146,24 @@ var Template;
         await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.serious, Template.fS.positions.bottomcenter);
         await Template.fS.update(2);
         await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0003);
-        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0004);
+        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0004, false); //false macht, das kein extra klick benötigt wird
         //Ticker Delay
-        Template.fS.Speech.setTickerDelays(3000, 2);
+        //fS.Speech.setTickerDelays(3000, 2);
         //hintergrund Musik einblenden
         Template.fS.Sound.fade(Template.sound.backgroundTheme, 0.6, 0.1, true);
         //Decision element
-        let firstDialogueElementAnswer = {
+        let classDesicionAnswer = {
             iSayMage: "Gruppe der Magier beitreten",
             iSaySwordsmen: "Gruppe der Swordsmen beitreten"
         };
-        let firstDialogueElement = await Template.fS.Menu.getInput(firstDialogueElementAnswer, "class");
-        switch (firstDialogueElement) {
-            case firstDialogueElementAnswer.iSayMage:
+        let classDesicion = await Template.fS.Menu.getInput(classDesicionAnswer, "class");
+        switch (classDesicion) {
+            case classDesicionAnswer.iSayMage:
                 //continue writing on this path
                 Template.fS.Sound.play(Template.sound.click, 1);
                 await Template.fS.Speech.tell(Template.characters.Principal, "Mage Dialog");
                 break;
-            case firstDialogueElementAnswer.iSaySwordsmen:
+            case classDesicionAnswer.iSaySwordsmen:
                 //continue writing on this path
                 Template.fS.Sound.play(Template.sound.click, 1);
                 await Template.fS.Character.show(Template.characters.Swordsmen, Template.characters.Swordsmen.pose.happy, Template.fS.positions.bottomcenter);

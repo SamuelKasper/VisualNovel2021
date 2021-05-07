@@ -44,7 +44,7 @@ namespace Template {
   //define character
   export let characters = {
     Principal: {
-      name: "Principal: ",
+      name: "Principal", //Principal:
       origin: fS.ORIGIN.BOTTOMCENTER,
       pose: {
         /**Auflistung der Posen/Emotionen*/
