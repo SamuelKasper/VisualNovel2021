@@ -596,7 +596,7 @@ var FudgeStory;
          * Returns an object to use to track logical data like score, states, textual inputs given by the play etc.
          */
         static setDataInterface(_data, _dom) {
-            Progress.setData(_data);
+            Progress.setData(_data); // test if this is sufficient to support previous save/load functionality
             let hndProxy = {
                 set: function (_target, _prop, _value) {
                     console.log("ProgressData: " + _prop.toString() + " = " + _value);
@@ -682,7 +682,7 @@ var FudgeStory;
         }
         static updateInterface(_dom) {
             for (let prop in Progress.data) {
-                let elements = _dom.querySelectorAll("#" + prop);
+                let elements = _dom.querySelectorAll("[name=" + prop + "]");
                 for (let element of elements)
                     element.value = Reflect.get(Progress.data, prop).toString();
             }
