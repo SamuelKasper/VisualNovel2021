@@ -140,7 +140,10 @@ var Template;
         await Template.fS.Location.show(Template.location.black);
         await Template.fS.Character.hide(Template.characters.Principal);
         await Template.fS.update(1);
-        //await fS.Text.print("Einige Zeit später...");
+        /*
+        await fS.Text.addClass("test");
+        await fS.Text.print("Einige Zeit später...");
+        await fS.Text.close();*/
         //await fS.update(1);
         await Template.fS.Location.show(Template.location.assembly_hall);
         await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.serious, Template.fS.positions.bottomcenter);

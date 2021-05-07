@@ -39,7 +39,11 @@ namespace Template {
     await fS.Location.show(location.black);
     await fS.Character.hide(characters.Principal);
     await fS.update(1);
-    //await fS.Text.print("Einige Zeit später...");
+    /*
+    await fS.Text.addClass("test");
+    await fS.Text.print("Einige Zeit später...");
+    await fS.Text.close();*/
+  
     //await fS.update(1);
     await fS.Location.show(location.assembly_hall);
     await fS.Character.show(characters.Principal, characters.Principal.pose.serious, fS.positions.bottomcenter);
