@@ -19,7 +19,7 @@ namespace Template {
     backgroundTheme: "Audio/tetris.mp3",
 
     //sound
-    click: "Auidio/klopfen.mp3"
+    click: "Audio/klopfen.mp3"
   };
 
   export let location = {
@@ -55,11 +55,11 @@ namespace Template {
     },
 
     Swordsmen: {
-      name: "Josh: ",
-      origin: fS.ORIGIN.BOTTOMRIGHT,
+      name: "Josh ",
+      origin: fS.ORIGIN.BOTTOMCENTER,
       pose: {
         /**Auflistung der Posen/Emotionen*/
-        happy: "Images/Characters/Swordsmen/Happy.png",
+        happy: "Images/Characters/Swordsmen/happy2.png",
         smile: ""
       }
     }
@@ -83,7 +83,8 @@ namespace Template {
   window.addEventListener("load", start);
   function start(_event: Event): void {
     let scenes: fS.Scenes = [
-      { scene: Scene, name: "Scene" }
+      { scene: Scene, name: "Scene" },
+      {scene: Scene2, name: "Scene2"}
     ];
 
     // start the sequence

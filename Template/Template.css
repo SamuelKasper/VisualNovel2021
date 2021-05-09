@@ -48,6 +48,10 @@ speech.Principal name{
   color: blueviolet;
 }
 
+speech.Josh name{
+  display: none;
+}
+
 speech.Principal content{
   color: white;
 }

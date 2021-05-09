@@ -1,25 +1,6 @@
 "use strict";
 var Template;
 (function (Template) {
-    async function Decision() {
-        console.log("Desicion");
-        let text = {
-            Teacher: {
-                T0000: "Test"
-            },
-            Swordsmen: {
-                T0000: ""
-            }
-        };
-        await Template.fS.Location.show(Template.location.academy);
-        await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.happy, Template.fS.positions.bottomcenter);
-        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0000);
-        await Template.fS.update(1);
-    }
-    Template.Decision = Decision;
-})(Template || (Template = {}));
-var Template;
-(function (Template) {
     Template.f = FudgeCore;
     Template.fS = FudgeStory;
     console.log("Start");
@@ -36,7 +17,7 @@ var Template;
         //music
         backgroundTheme: "Audio/tetris.mp3",
         //sound
-        click: "Auidio/klopfen.mp3"
+        click: "Audio/klopfen.mp3"
     };
     Template.location = {
         academy: {
@@ -69,11 +50,11 @@ var Template;
             }
         },
         Swordsmen: {
-            name: "Josh: ",
-            origin: Template.fS.ORIGIN.BOTTOMRIGHT,
+            name: "Josh ",
+            origin: Template.fS.ORIGIN.BOTTOMCENTER,
             pose: {
                 /**Auflistung der Posen/Emotionen*/
-                happy: "Images/Characters/Swordsmen/Happy.png",
+                happy: "Images/Characters/Swordsmen/happy2.png",
                 smile: ""
             }
         }
@@ -94,11 +75,29 @@ var Template;
     window.addEventListener("load", start);
     function start(_event) {
         let scenes = [
-            { scene: Template.Scene, name: "Scene" }
+            { scene: Template.Scene, name: "Scene" },
+            { scene: Template.Scene2, name: "Scene2" }
         ];
         // start the sequence
         Template.fS.Progress.go(scenes);
     }
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function Scene2() {
+        console.log("FudgeStory Template Scene starting");
+        //Text definieren
+        let text = {
+            Swordsmen: {
+                T0000: "Das ist also das der Bereich für das Praktische Training."
+            }
+        };
+        await Template.fS.Location.show(Template.location.dojo);
+        await Template.fS.Character.show(Template.characters.Swordsmen, Template.characters.Swordsmen.pose.happy, Template.fS.positions.bottomcenter);
+        await Template.fS.update();
+        await Template.fS.Speech.tell(Template.characters.Swordsmen, text.Swordsmen.T0000);
+    }
+    Template.Scene2 = Scene2;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -110,8 +109,15 @@ var Template;
                 T0000: "Herzlich Willkommen in der Akademie!",
                 T0001: "Ich bin der Leiter der Akademie und darf heute die Einführungsveranstallung abhalten.",
                 T0002: "Dann fangen wir mal an.",
-                T0003: "So, nachdem ihr nun alle relevanten Information habt können wir endlich anfangen.",
-                T0004: "Teilt euch bitte selbst nach euren Eigenschaften in zwei Gruppen ein."
+                T0003: "Teilt euch bitte selbst nach euren Eigenschaften in zwei Gruppen ein.",
+                T0004: "So, nachdem das geschafft ist kommen wir nun zu ein paar organisatorischen Dingen.",
+                T0005: "Der Unterricht läuft so ab das ihr zwischen theoretischem und praktischem Unterricht wählen könnt.",
+                T0006: "Für Magier wird eher der theoretische Teil empfohlen, für Swordsmen eher der praktische Unterricht.",
+                T0007: "Trotz allem liegt die Wahl bei euch.",
+                T0008: "Der Unterricht beginnt direkt nach dieser Veranstaltung.",
+                T0009: "So, nun noch eine letzte, aber trotzdem wichtige Regel.",
+                T0010: "Das betreten der Gebiete ausderhalb des Schulgeländes ist zu eurem eigenen Schutz verboten!",
+                T0011: "Das war alles. Viel Spaß!"
             },
             Swordsmen: {
                 T0000: "",
@@ -136,44 +142,53 @@ var Template;
         await Template.fS.Character.hide(Template.characters.Principal);
         await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.happy, Template.fS.positions.bottomcenter);
         await Template.fS.update();
-        await Template.fS.Speech.hide();
-        await Template.fS.Location.show(Template.location.black);
-        await Template.fS.Character.hide(Template.characters.Principal);
-        await Template.fS.update(1);
-        /*
-        await fS.Text.addClass("test");
-        await fS.Text.print("Einige Zeit später...");
-        await fS.Text.close();*/
-        //await fS.update(1);
         await Template.fS.Location.show(Template.location.assembly_hall);
+        await Template.fS.Character.hide(Template.characters.Principal);
         await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.serious, Template.fS.positions.bottomcenter);
-        await Template.fS.update(2);
-        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0003);
-        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0004, false); //false macht, das kein extra klick benötigt wird
-        //Ticker Delay
-        //fS.Speech.setTickerDelays(3000, 2);
-        //hintergrund Musik einblenden
-        Template.fS.Sound.fade(Template.sound.backgroundTheme, 0.6, 0.1, true);
+        await Template.fS.update();
+        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0003, false);
+        /*Ticker Delay
+        fS.Speech.setTickerDelays(3000, 2);*/
+        /*hintergrund Musik einblenden
+        fS.Sound.fade(sound.backgroundTheme, 0.6, 0.1, true);*/
         //Decision element
         let classDesicionAnswer = {
             iSayMage: "Gruppe der Magier beitreten",
-            iSaySwordsmen: "Gruppe der Swordsmen beitreten"
+            iSaySwordsmen: "Gruppe der Kämpfer beitreten"
         };
         let classDesicion = await Template.fS.Menu.getInput(classDesicionAnswer, "class");
         switch (classDesicion) {
             case classDesicionAnswer.iSayMage:
                 //continue writing on this path
                 Template.fS.Sound.play(Template.sound.click, 1);
-                await Template.fS.Speech.tell(Template.characters.Principal, "Mage Dialog");
+                await Template.fS.Speech.tell(Template.characters.Principal, "[Magier ausgewählt]");
                 break;
             case classDesicionAnswer.iSaySwordsmen:
                 //continue writing on this path
                 Template.fS.Sound.play(Template.sound.click, 1);
-                await Template.fS.Character.show(Template.characters.Swordsmen, Template.characters.Swordsmen.pose.happy, Template.fS.positions.bottomcenter);
-                await Template.fS.update(1);
-                await Template.fS.Speech.tell(Template.characters.Principal, "Swordsmen Dialog");
+                await Template.fS.Speech.tell(Template.characters.Principal, "[Kämpfer ausgewählt]");
                 break;
         }
+        await Template.fS.update(1);
+        await Template.fS.Speech.hide();
+        await Template.fS.Character.hide(Template.characters.Principal);
+        await Template.fS.Location.show(Template.location.black);
+        await Template.fS.update(1);
+        await Template.fS.Location.show(Template.location.assembly_hall);
+        await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.happy, Template.fS.positions.bottomcenter);
+        await Template.fS.update(1);
+        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0004);
+        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0005);
+        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0006);
+        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0007);
+        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0008);
+        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0009);
+        await Template.fS.Character.hide(Template.characters.Principal);
+        await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.serious, Template.fS.positions.bottomcenter);
+        await Template.fS.update();
+        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0010);
+        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0011);
+        await Template.fS.Character.hide(Template.characters.Principal);
         //hintergrund Musik ausblenden
         Template.fS.Sound.fade(Template.sound.backgroundTheme, 0, 0.1, false);
     }
