@@ -55,3 +55,8 @@ speech.Josh name{
 speech.Principal content{
   color: white;
 }
+
+dialog{
+  color: white;
+  font-size: 40px;
+}

@@ -170,9 +170,12 @@ var Template;
                 break;
         }
         await Template.fS.update(1);
-        await Template.fS.Speech.hide();
+        Template.fS.Speech.hide();
         await Template.fS.Character.hide(Template.characters.Principal);
         await Template.fS.Location.show(Template.location.black);
+        await Template.fS.update(1);
+        await Template.fS.Text.print("Test Text");
+        Template.fS.Text.close();
         await Template.fS.update(1);
         await Template.fS.Location.show(Template.location.assembly_hall);
         await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.happy, Template.fS.positions.bottomcenter);

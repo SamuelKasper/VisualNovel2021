@@ -76,10 +76,14 @@ namespace Template {
     }
     
     await fS.update(1);
-    await fS.Speech.hide();
+    fS.Speech.hide();
     await fS.Character.hide(characters.Principal);
     await fS.Location.show(location.black);
     await fS.update(1);
+    await fS.Text.print("Test Text");
+    fS.Text.close();
+    await fS.update(1);
+    
 
     await fS.Location.show(location.assembly_hall);
     await fS.Character.show(characters.Principal, characters.Principal.pose.happy, fS.positions.bottomcenter);
