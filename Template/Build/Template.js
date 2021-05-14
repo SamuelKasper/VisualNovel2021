@@ -59,6 +59,14 @@ var Template;
             }
         }
     };
+    //Progress - kontrolle der Szenenstruktur (reihenfolge) - verzweigung der Pfade
+    //Alles was sich vom Programm gemerkt werden soll, kommt in Progress rein
+    Template.dataForSave = {
+        characterToSave: {
+            name: "charToSave",
+        },
+        punkte: 0
+    };
     document.addEventListener("keydown", hndKeypress);
     async function hndKeypress(_event) {
         switch (_event.code) {
@@ -78,6 +86,8 @@ var Template;
             { scene: Template.Scene, name: "Scene" },
             { scene: Template.Scene2, name: "Scene2" }
         ];
+        //Progress Daten setzten
+        Template.fS.Progress.setData(Template.dataForSave);
         // start the sequence
         Template.fS.Progress.go(scenes);
     }
@@ -131,8 +141,10 @@ var Template;
         await Template.fS.Character.hide(Template.characters.Principal);
         await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.serious, Template.fS.positions.bottomcenter);
         await Template.fS.update();
-        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0003, false);
-        /*Ticker Delay
+        //false = nicht auf userinput warten
+        //className = css Klasse für den Text
+        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0003, false, "className");
+        /*Ticker (Text wird erst geschrieben)
         fS.Speech.setTickerDelays(3000, 2);*/
         /*hintergrund Musik einblenden
         fS.Sound.fade(sound.backgroundTheme, 0.6, 0.1, true);*/
@@ -141,19 +153,25 @@ var Template;
             iSayMage: "Gruppe der Magier beitreten",
             iSaySwordsmen: "Gruppe der Kämpfer beitreten"
         };
+        //Object kann mit dem klassen namen angesprochen werden
         let classDesicion = await Template.fS.Menu.getInput(classDesicionAnswer, "class");
         switch (classDesicion) {
             case classDesicionAnswer.iSayMage:
                 //continue writing on this path
                 Template.fS.Sound.play(Template.sound.click, 1);
                 await Template.fS.Speech.tell(Template.characters.Principal, "[Magier ausgewählt]");
+                //Punkte verteilen
+                Template.dataForSave.punkte += 1;
                 break;
             case classDesicionAnswer.iSaySwordsmen:
                 //continue writing on this path
                 Template.fS.Sound.play(Template.sound.click, 1);
                 await Template.fS.Speech.tell(Template.characters.Principal, "[Kämpfer ausgewählt]");
+                //Punkte verteilen
+                Template.dataForSave.punkte += 50;
                 break;
         }
+        console.log(Template.dataForSave.punkte);
         await Template.fS.update(1);
         Template.fS.Speech.hide();
         await Template.fS.Character.hide(Template.characters.Principal);
@@ -196,6 +214,14 @@ var Template;
         await Template.fS.Character.show(Template.characters.Swordsmen, Template.characters.Swordsmen.pose.happy, Template.fS.positions.bottomcenter);
         await Template.fS.update();
         await Template.fS.Speech.tell(Template.characters.Swordsmen, text.Swordsmen.T0000);
+        //Verzögerung (x sek nach letztem klick)
+        let signalDelay2s = Template.fS.Progress.defineSignal([() => Template.fS.Progress.delay(2)]);
+        await signalDelay2s();
+        //set - Text direkt anzeigen ohne erst zu schreiben
+        Template.fS.Speech.set(Template.characters.Swordsmen, "Dieser Text wird nicht erst geschrieben, sondern direkt angezeigt");
+        //name eingeben und in Progress speichern
+        Template.dataForSave.characterToSave.name = await Template.fS.Speech.getInput();
+        //Namens Eingabe Feld
     }
     Template.Scene2 = Scene2;
 })(Template || (Template = {}));

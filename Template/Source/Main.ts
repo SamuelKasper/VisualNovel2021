@@ -65,6 +65,15 @@ namespace Template {
     }
   };
 
+  //Progress - kontrolle der Szenenstruktur (reihenfolge) - verzweigung der Pfade
+  //Alles was sich vom Programm gemerkt werden soll, kommt in Progress rein
+  export let dataForSave = {
+    characterToSave: {
+      name: "charToSave",
+    },
+    punkte: 0
+  };
+
   document.addEventListener("keydown", hndKeypress);
   async function hndKeypress(_event: KeyboardEvent): Promise<void> {
     switch (_event.code) {
@@ -86,6 +95,9 @@ namespace Template {
       { scene: Scene, name: "Scene" },
       {scene: Scene2, name: "Scene2"}
     ];
+
+    //Progress Daten setzten
+    fS.Progress.setData(dataForSave);
 
     // start the sequence
     fS.Progress.go(scenes);

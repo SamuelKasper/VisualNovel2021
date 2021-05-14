@@ -48,9 +48,11 @@ namespace Template {
     await fS.Character.hide(characters.Principal);
     await fS.Character.show(characters.Principal, characters.Principal.pose.serious, fS.positions.bottomcenter);
     await fS.update();
-    await fS.Speech.tell(characters.Principal, text.Teacher.T0003, false);
+    //false = nicht auf userinput warten
+    //className = css Klasse für den Text
+    await fS.Speech.tell(characters.Principal, text.Teacher.T0003, false, "className");
   
-    /*Ticker Delay
+    /*Ticker (Text wird erst geschrieben)
     fS.Speech.setTickerDelays(3000, 2);*/
 
     /*hintergrund Musik einblenden
@@ -62,6 +64,7 @@ namespace Template {
       iSaySwordsmen: "Gruppe der Kämpfer beitreten"
     };
 
+    //Object kann mit dem klassen namen angesprochen werden
     let classDesicion = await fS.Menu.getInput(classDesicionAnswer, "class");
 
     switch(classDesicion){
@@ -69,14 +72,18 @@ namespace Template {
         //continue writing on this path
         fS.Sound.play(sound.click,1);
         await fS.Speech.tell(characters.Principal, "[Magier ausgewählt]");
+        //Punkte verteilen
+        dataForSave.punkte += 1;
         break;
       case classDesicionAnswer.iSaySwordsmen:
         //continue writing on this path
         fS.Sound.play(sound.click,1);
         await fS.Speech.tell(characters.Principal, "[Kämpfer ausgewählt]");
+        //Punkte verteilen
+        dataForSave.punkte += 50;
         break;
     }
-    
+    console.log(dataForSave.punkte);
     await fS.update(1);
     fS.Speech.hide();
     await fS.Character.hide(characters.Principal);

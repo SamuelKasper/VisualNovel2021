@@ -51,6 +51,12 @@ declare namespace Template {
             };
         };
     };
+    let dataForSave: {
+        characterToSave: {
+            name: string;
+        };
+        punkte: number;
+    };
 }
 declare namespace Template {
     function Scene(): fS.SceneReturn;
