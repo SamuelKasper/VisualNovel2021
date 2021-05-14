@@ -7,8 +7,8 @@ var Template;
     //define transition
     Template.transition = {
         clock: {
-            duration: 3,
-            alpha: "",
+            duration: 1.5,
+            alpha: "Transitions/circlewipe-cw.jpg",
             edge: 1
         }
     };
@@ -85,7 +85,7 @@ var Template;
 var Template;
 (function (Template) {
     async function Scene() {
-        console.log("FudgeStory Template Scene starting");
+        console.log("Szene 1 started");
         //Text definieren
         let text = {
             Teacher: {
@@ -110,7 +110,9 @@ var Template;
         };
         await Template.fS.Speech.hide();
         await Template.fS.Location.show(Template.location.academy);
-        await Template.fS.update(3);
+        //await fS.update(2);
+        await Template.fS.update(Template.transition.clock.duration, Template.transition.clock.alpha, Template.transition.clock.edge);
+        //
         await Template.fS.Location.show(Template.location.assembly_hall);
         await Template.fS.update(1);
         await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.happy, Template.fS.positions.bottomcenter);
@@ -183,7 +185,7 @@ var Template;
 var Template;
 (function (Template) {
     async function Scene2() {
-        console.log("FudgeStory Template Scene starting");
+        console.log("Szene 2 started");
         //Text definieren
         let text = {
             Swordsmen: {

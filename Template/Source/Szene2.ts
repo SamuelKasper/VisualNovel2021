@@ -1,10 +1,9 @@
 namespace Template {
     export async function Scene2(): fS.SceneReturn {
-      console.log("FudgeStory Template Scene starting");
+      console.log("Szene 2 started");
   
       //Text definieren
       let text = {
-  
         Swordsmen: {
           T0000: "Das ist also das der Bereich für das Praktische Training."
         }

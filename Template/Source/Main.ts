@@ -7,8 +7,8 @@ namespace Template {
   //define transition
   export let transition = {
     clock: {
-      duration: 3,
-      alpha: "",
+      duration: 1.5,
+      alpha: "Transitions/circlewipe-cw.jpg",
       edge: 1
     }
   };

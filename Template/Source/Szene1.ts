@@ -1,6 +1,6 @@
 namespace Template {
   export async function Scene(): fS.SceneReturn {
-    console.log("FudgeStory Template Scene starting");
+    console.log("Szene 1 started");
 
     //Text definieren
     let text = {
@@ -27,7 +27,9 @@ namespace Template {
     };
     await fS.Speech.hide();
     await fS.Location.show(location.academy);
-    await fS.update(3);
+    //await fS.update(2);
+    await fS.update(transition.clock.duration, transition.clock.alpha, transition.clock.edge);
+    //
     await fS.Location.show(location.assembly_hall);
     await fS.update(1);
     await fS.Character.show(characters.Principal, characters.Principal.pose.happy, fS.positions.bottomcenter);
