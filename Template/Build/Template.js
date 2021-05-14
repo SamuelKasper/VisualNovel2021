@@ -84,23 +84,6 @@ var Template;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
-    async function Scene2() {
-        console.log("FudgeStory Template Scene starting");
-        //Text definieren
-        let text = {
-            Swordsmen: {
-                T0000: "Das ist also das der Bereich für das Praktische Training."
-            }
-        };
-        await Template.fS.Location.show(Template.location.dojo);
-        await Template.fS.Character.show(Template.characters.Swordsmen, Template.characters.Swordsmen.pose.happy, Template.fS.positions.bottomcenter);
-        await Template.fS.update();
-        await Template.fS.Speech.tell(Template.characters.Swordsmen, text.Swordsmen.T0000);
-    }
-    Template.Scene2 = Scene2;
-})(Template || (Template = {}));
-var Template;
-(function (Template) {
     async function Scene() {
         console.log("FudgeStory Template Scene starting");
         //Text definieren
@@ -174,7 +157,7 @@ var Template;
         await Template.fS.Character.hide(Template.characters.Principal);
         await Template.fS.Location.show(Template.location.black);
         await Template.fS.update(1);
-        await Template.fS.Text.print("Test Text");
+        await Template.fS.Text.print("Einige Zeit später...");
         Template.fS.Text.close();
         await Template.fS.update(1);
         await Template.fS.Location.show(Template.location.assembly_hall);
@@ -196,5 +179,22 @@ var Template;
         Template.fS.Sound.fade(Template.sound.backgroundTheme, 0, 0.1, false);
     }
     Template.Scene = Scene;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function Scene2() {
+        console.log("FudgeStory Template Scene starting");
+        //Text definieren
+        let text = {
+            Swordsmen: {
+                T0000: "Das ist also das der Bereich für das Praktische Training."
+            }
+        };
+        await Template.fS.Location.show(Template.location.dojo);
+        await Template.fS.Character.show(Template.characters.Swordsmen, Template.characters.Swordsmen.pose.happy, Template.fS.positions.bottomcenter);
+        await Template.fS.update();
+        await Template.fS.Speech.tell(Template.characters.Swordsmen, text.Swordsmen.T0000);
+    }
+    Template.Scene2 = Scene2;
 })(Template || (Template = {}));
 //# sourceMappingURL=Template.js.map

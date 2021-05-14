@@ -3,8 +3,8 @@
     "commonSourceDirectory": "..",
     "sourceFiles": [
       "../Source/Main.ts",
-      "../Source/Szene2.ts",
-      "../Source/Text.ts"
+      "../Source/Szene1.ts",
+      "../Source/Szene2.ts"
     ],
     "js": {
       "sections": [
@@ -16,7 +16,7 @@
         },
         {
           "pos": 15,
-          "end": 9475,
+          "end": 9487,
           "kind": "text"
         }
       ],

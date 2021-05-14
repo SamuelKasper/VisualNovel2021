@@ -53,8 +53,8 @@ declare namespace Template {
     };
 }
 declare namespace Template {
-    function Scene2(): fS.SceneReturn;
+    function Scene(): fS.SceneReturn;
 }
 declare namespace Template {
-    function Scene(): fS.SceneReturn;
+    function Scene2(): fS.SceneReturn;
 }

@@ -80,7 +80,7 @@ namespace Template {
     await fS.Character.hide(characters.Principal);
     await fS.Location.show(location.black);
     await fS.update(1);
-    await fS.Text.print("Test Text");
+    await fS.Text.print("Einige Zeit später...");
     fS.Text.close();
     await fS.update(1);
     
