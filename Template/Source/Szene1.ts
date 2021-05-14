@@ -83,7 +83,10 @@ namespace Template {
         dataForSave.punkte += 50;
         break;
     }
+    //Punkte kontrolle
     console.log(dataForSave.punkte);
+
+    //Text auf schwarzem Hintergrund
     await fS.update(1);
     fS.Speech.hide();
     await fS.Character.hide(characters.Principal);

@@ -65,7 +65,12 @@ var Template;
         characterToSave: {
             name: "charToSave",
         },
-        punkte: 0
+        punkte: 0,
+        itemImage: {
+            name: "Foto",
+            description: "Description",
+            image: "Images/Backgrounds/ladscape.jpg"
+        }
     };
     document.addEventListener("keydown", hndKeypress);
     async function hndKeypress(_event) {
@@ -171,7 +176,9 @@ var Template;
                 Template.dataForSave.punkte += 50;
                 break;
         }
+        //Punkte kontrolle
         console.log(Template.dataForSave.punkte);
+        //Text auf schwarzem Hintergrund
         await Template.fS.update(1);
         Template.fS.Speech.hide();
         await Template.fS.Character.hide(Template.characters.Principal);
@@ -221,6 +228,10 @@ var Template;
         Template.fS.Speech.set(Template.characters.Swordsmen, "Dieser Text wird nicht erst geschrieben, sondern direkt angezeigt");
         //name eingeben und in Progress speichern
         Template.dataForSave.characterToSave.name = await Template.fS.Speech.getInput();
+        //Inventar
+        await Template.fS.Inventory.open();
+        //Geht noch nicht!!
+        Template.fS.Inventory.add(Template.dataForSave.itemImage);
         //Namens Eingabe Feld
     }
     Template.Scene2 = Scene2;

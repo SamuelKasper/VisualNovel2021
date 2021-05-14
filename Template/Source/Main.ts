@@ -71,7 +71,14 @@ namespace Template {
     characterToSave: {
       name: "charToSave",
     },
-    punkte: 0
+
+    punkte: 0,
+
+    itemImage: {
+      name: "Foto",
+      description: "Description",
+      image: "Images/Backgrounds/ladscape.jpg"
+    }
   };
 
   document.addEventListener("keydown", hndKeypress);

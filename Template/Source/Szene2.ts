@@ -23,6 +23,12 @@ namespace Template {
       //name eingeben und in Progress speichern
       dataForSave.characterToSave.name = await fS.Speech.getInput();
 
+      //Inventar
+      
+      await fS.Inventory.open();
+      //Geht noch nicht!!
+      fS.Inventory.add(dataForSave.itemImage);
+
 
 
       //Namens Eingabe Feld

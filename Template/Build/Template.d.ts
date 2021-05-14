@@ -56,6 +56,11 @@ declare namespace Template {
             name: string;
         };
         punkte: number;
+        itemImage: {
+            name: string;
+            description: string;
+            image: string;
+        };
     };
 }
 declare namespace Template {
