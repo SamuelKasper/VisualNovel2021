@@ -20,18 +20,18 @@ namespace Template {
       //set - Text direkt anzeigen ohne erst zu schreiben
       fS.Speech.set(characters.Swordsmen, "Dieser Text wird nicht erst geschrieben, sondern direkt angezeigt");
 
+      //Namens Eingabe Feld
       //name eingeben und in Progress speichern
       dataForSave.characterToSave.name = await fS.Speech.getInput();
 
       //Inventar
-      
-      await fS.Inventory.open();
       //Geht noch nicht!!
-      fS.Inventory.add(dataForSave.itemImage);
+      let image: fS.ItemDefinition = dataForSave.itemImage;
+      fS.Inventory.add(image);
+      await fS.Inventory.open();
 
 
-
-      //Namens Eingabe Feld
+      
 
     }
   }

@@ -229,9 +229,10 @@ var Template;
         //name eingeben und in Progress speichern
         Template.dataForSave.characterToSave.name = await Template.fS.Speech.getInput();
         //Inventar
-        await Template.fS.Inventory.open();
         //Geht noch nicht!!
-        Template.fS.Inventory.add(Template.dataForSave.itemImage);
+        let image = Template.dataForSave.itemImage;
+        Template.fS.Inventory.add(image);
+        await Template.fS.Inventory.open();
         //Namens Eingabe Feld
     }
     Template.Scene2 = Scene2;
