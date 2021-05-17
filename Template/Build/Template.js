@@ -65,12 +65,7 @@ var Template;
         characterToSave: {
             name: "charToSave",
         },
-        punkte: 0,
-        itemImage: {
-            name: "Foto",
-            description: "Description",
-            image: "Images/Backgrounds/ladscape.jpg"
-        }
+        punkte: 0
     };
     document.addEventListener("keydown", hndKeypress);
     async function hndKeypress(_event) {
@@ -88,7 +83,7 @@ var Template;
     window.addEventListener("load", start);
     function start(_event) {
         let scenes = [
-            { scene: Template.Scene, name: "Scene" },
+            //{ scene: Scene, name: "Scene" },
             { scene: Template.Scene2, name: "Scene2" }
         ];
         //Progress Daten setzten
@@ -226,14 +221,13 @@ var Template;
         await signalDelay2s();
         //set - Text direkt anzeigen ohne erst zu schreiben
         Template.fS.Speech.set(Template.characters.Swordsmen, "Dieser Text wird nicht erst geschrieben, sondern direkt angezeigt");
+        //Namens Eingabe Feld
         //name eingeben und in Progress speichern
         Template.dataForSave.characterToSave.name = await Template.fS.Speech.getInput();
         //Inventar
-        //Geht noch nicht!!
-        let image = Template.dataForSave.itemImage;
-        Template.fS.Inventory.add(image);
+        //let image: fS.ItemDefinition = itemImage;
+        Template.fS.Inventory.add(Template.itemImage);
         await Template.fS.Inventory.open();
-        //Namens Eingabe Feld
     }
     Template.Scene2 = Scene2;
 })(Template || (Template = {}));

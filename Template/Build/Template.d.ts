@@ -56,11 +56,11 @@ declare namespace Template {
             name: string;
         };
         punkte: number;
-        itemImage: {
-            name: string;
-            description: string;
-            image: string;
-        };
+    };
+    let itemImage: {
+        name: "Foto";
+        description: "Description";
+        image: "Images/Backgrounds/ladscape.jpg";
     };
 }
 declare namespace Template {

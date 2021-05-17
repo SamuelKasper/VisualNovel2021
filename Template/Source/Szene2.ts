@@ -24,11 +24,15 @@ namespace Template {
       //name eingeben und in Progress speichern
       dataForSave.characterToSave.name = await fS.Speech.getInput();
 
+
+
+
+      
       //Inventar
-      //Geht noch nicht!!
-      let image: fS.ItemDefinition = dataForSave.itemImage;
-      fS.Inventory.add(image);
+      //let image: fS.ItemDefinition = itemImage;
+      fS.Inventory.add(itemImage);
       await fS.Inventory.open();
+      
 
 
       

@@ -72,13 +72,14 @@ namespace Template {
       name: "charToSave",
     },
 
-    punkte: 0,
+    punkte: 0
 
-    itemImage: {
-      name: "Foto",
-      description: "Description",
-      image: "Images/Backgrounds/ladscape.jpg"
-    }
+  };
+
+  export let itemImage: {
+    name: "Foto",
+    description: "Description",
+    image: "Images/Backgrounds/ladscape.jpg"
   };
 
   document.addEventListener("keydown", hndKeypress);
@@ -99,7 +100,7 @@ namespace Template {
   window.addEventListener("load", start);
   function start(_event: Event): void {
     let scenes: fS.Scenes = [
-      { scene: Scene, name: "Scene" },
+      //{ scene: Scene, name: "Scene" },
       {scene: Scene2, name: "Scene2"}
     ];
 
