@@ -67,6 +67,13 @@ var Template;
         },
         punkte: 0
     };
+    Template.items = {
+        Image: {
+            name: "Foto",
+            description: "Ein Foto",
+            image: "Images/Backgrounds/ladscape.jpg"
+        }
+    };
     document.addEventListener("keydown", hndKeypress);
     async function hndKeypress(_event) {
         switch (_event.code) {
@@ -217,16 +224,15 @@ var Template;
         await Template.fS.update();
         await Template.fS.Speech.tell(Template.characters.Swordsmen, text.Swordsmen.T0000);
         //Verzögerung (x sek nach letztem klick)
-        let signalDelay2s = Template.fS.Progress.defineSignal([() => Template.fS.Progress.delay(2)]);
-        await signalDelay2s();
+        //let signalDelay2s: fS.Signal = fS.Progress.defineSignal([() => fS.Progress.delay(2)]);
+        //await signalDelay2s();
         //set - Text direkt anzeigen ohne erst zu schreiben
         Template.fS.Speech.set(Template.characters.Swordsmen, "Dieser Text wird nicht erst geschrieben, sondern direkt angezeigt");
         //Namens Eingabe Feld
         //name eingeben und in Progress speichern
-        Template.dataForSave.characterToSave.name = await Template.fS.Speech.getInput();
+        //dataForSave.characterToSave.name = await fS.Speech.getInput();
         //Inventar
-        //let image: fS.ItemDefinition = itemImage;
-        Template.fS.Inventory.add(Template.itemImage);
+        Template.fS.Inventory.add(Template.items.Image);
         await Template.fS.Inventory.open();
     }
     Template.Scene2 = Scene2;

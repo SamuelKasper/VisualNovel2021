@@ -76,10 +76,12 @@ namespace Template {
 
   };
 
-  export let itemImage: {
-    name: "Foto",
-    description: "Description",
-    image: "Images/Backgrounds/ladscape.jpg"
+  export let items = {
+    Image: {
+      name: "Foto",
+      description: "Ein Foto",
+      image: "Images/Backgrounds/ladscape.jpg"
+    }
   };
 
   document.addEventListener("keydown", hndKeypress);
@@ -101,7 +103,7 @@ namespace Template {
   function start(_event: Event): void {
     let scenes: fS.Scenes = [
       //{ scene: Scene, name: "Scene" },
-      {scene: Scene2, name: "Scene2"}
+      { scene: Scene2, name: "Scene2" }
     ];
 
     //Progress Daten setzten

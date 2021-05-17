@@ -14,23 +14,22 @@ namespace Template {
       await fS.Speech.tell(characters.Swordsmen, text.Swordsmen.T0000); 
 
       //Verzögerung (x sek nach letztem klick)
-      let signalDelay2s: fS.Signal = fS.Progress.defineSignal([() => fS.Progress.delay(2)]);
-      await signalDelay2s();
+      //let signalDelay2s: fS.Signal = fS.Progress.defineSignal([() => fS.Progress.delay(2)]);
+      //await signalDelay2s();
 
       //set - Text direkt anzeigen ohne erst zu schreiben
       fS.Speech.set(characters.Swordsmen, "Dieser Text wird nicht erst geschrieben, sondern direkt angezeigt");
 
       //Namens Eingabe Feld
       //name eingeben und in Progress speichern
-      dataForSave.characterToSave.name = await fS.Speech.getInput();
+      //dataForSave.characterToSave.name = await fS.Speech.getInput();
 
 
 
 
       
       //Inventar
-      //let image: fS.ItemDefinition = itemImage;
-      fS.Inventory.add(itemImage);
+      fS.Inventory.add(items.Image);
       await fS.Inventory.open();
       
 
