@@ -35,7 +35,7 @@ namespace Template {
     await fS.Character.show(characters.Principal, characters.Principal.pose.happy, fS.positions.bottomcenter);
     await fS.Speech.show();
     await fS.update(1);
-    await fS.Speech.tell(characters.Principal, text.Teacher.T0000); 
+    await fS.Speech.tell(characters.Principal, text.Teacher.T0000);
     await fS.Character.hide(characters.Principal);
     await fS.Character.show(characters.Principal, characters.Principal.pose.laught, fS.positions.bottomcenter);
     await fS.update();
@@ -51,7 +51,7 @@ namespace Template {
     //false = nicht auf userinput warten
     //className = css Klasse für den Text
     await fS.Speech.tell(characters.Principal, text.Teacher.T0003, false, "className");
-  
+
     /*Ticker (Text wird erst geschrieben)
     fS.Speech.setTickerDelays(3000, 2);*/
 
@@ -67,17 +67,17 @@ namespace Template {
     //Object kann mit dem klassen namen angesprochen werden
     let classDesicion = await fS.Menu.getInput(classDesicionAnswer, "class");
 
-    switch(classDesicion){
+    switch (classDesicion) {
       case classDesicionAnswer.iSayMage:
         //continue writing on this path
-        fS.Sound.play(sound.click,1);
+        fS.Sound.play(sound.click, 1);
         await fS.Speech.tell(characters.Principal, "[Magier ausgewählt]");
         //Punkte verteilen
         dataForSave.punkte += 1;
         break;
       case classDesicionAnswer.iSaySwordsmen:
         //continue writing on this path
-        fS.Sound.play(sound.click,1);
+        fS.Sound.play(sound.click, 1);
         await fS.Speech.tell(characters.Principal, "[Kämpfer ausgewählt]");
         //Punkte verteilen
         dataForSave.punkte += 50;
@@ -95,13 +95,26 @@ namespace Template {
     await fS.Text.print("Einige Zeit später...");
     fS.Text.close();
     await fS.update(1);
-    
+
 
     await fS.Location.show(location.assembly_hall);
     await fS.Character.show(characters.Principal, characters.Principal.pose.happy, fS.positions.bottomcenter);
     await fS.update(1);
     await fS.Speech.tell(characters.Principal, text.Teacher.T0004);
-    await fS.Speech.tell(characters.Principal, text.Teacher.T0005);
+    await fS.Speech.tell(characters.Principal, "Animation STARTET");
+
+    //Animation
+    let moveLeftAnimation: fS.AnimationDefinition = {
+      start: { translation: fS.positions.bottomleft, rotation: -20, scaling: new fS.Position(0.5, 1.5), color: fS.Color.CSS("blue", 0) },
+      end: { translation: fS.positions.bottomright, rotation: 20, scaling: new fS.Position(1.5, 0.5), color: fS.Color.CSS("red", 0) },
+      duration: 1,
+      playmode: fS.ANIMATION_PLAYMODE.REVERSELOOP
+    };
+
+    await fS.Character.animate(characters.Principal, characters.Principal.pose.happy, moveLeftAnimation);
+    await fS.update(2);
+
+    //Animation End
     await fS.Speech.tell(characters.Principal, text.Teacher.T0006);
     await fS.Speech.tell(characters.Principal, text.Teacher.T0007);
     await fS.Speech.tell(characters.Principal, text.Teacher.T0008);

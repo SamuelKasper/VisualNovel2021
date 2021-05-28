@@ -90,7 +90,7 @@ var Template;
     window.addEventListener("load", start);
     function start(_event) {
         let scenes = [
-            //{ scene: Scene, name: "Scene" },
+            { scene: Template.Scene, name: "Scene" },
             { scene: Template.Scene2, name: "Scene2" }
         ];
         //Progress Daten setzten
@@ -193,7 +193,17 @@ var Template;
         await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.happy, Template.fS.positions.bottomcenter);
         await Template.fS.update(1);
         await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0004);
-        await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0005);
+        await Template.fS.Speech.tell(Template.characters.Principal, "Animation STARTET");
+        //Animation
+        let moveLeftAnimation = {
+            start: { translation: Template.fS.positions.bottomleft, rotation: -20, scaling: new Template.fS.Position(0.5, 1.5), color: Template.fS.Color.CSS("blue", 0) },
+            end: { translation: Template.fS.positions.bottomright, rotation: 20, scaling: new Template.fS.Position(1.5, 0.5), color: Template.fS.Color.CSS("red", 0) },
+            duration: 1,
+            playmode: Template.fS.ANIMATION_PLAYMODE.REVERSELOOP
+        };
+        await Template.fS.Character.animate(Template.characters.Principal, Template.characters.Principal.pose.happy, moveLeftAnimation);
+        await Template.fS.update(2);
+        //Animation End
         await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0006);
         await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0007);
         await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0008);

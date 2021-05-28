@@ -102,7 +102,7 @@ namespace Template {
   window.addEventListener("load", start);
   function start(_event: Event): void {
     let scenes: fS.Scenes = [
-      //{ scene: Scene, name: "Scene" },
+      { scene: Scene, name: "Scene" },
       { scene: Scene2, name: "Scene2" }
     ];
 
