@@ -72,7 +72,11 @@ namespace Template {
       name: "charToSave",
     },
 
-    punkte: 0
+    punkte: 0,
+
+    skala: {
+      a: 0
+    }
 
   };
 
@@ -106,8 +110,11 @@ namespace Template {
       { scene: Scene2, name: "Scene2" }
     ];
 
+    let uiElement: HTMLElement = document.querySelector('[type="interface"]');
+    dataForSave.skala = fS.Progress.setDataInterface(dataForSave.skala, uiElement);
+
     //Progress Daten setzten
-    fS.Progress.setData(dataForSave);
+    //fS.Progress.setData(dataForSave);
 
     // start the sequence
     fS.Progress.go(scenes);

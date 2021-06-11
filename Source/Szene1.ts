@@ -32,6 +32,17 @@ namespace Template {
     //
     await fS.Location.show(location.assembly_hall);
     await fS.update(1);
+
+    //Skala
+    dataForSave.skala.a += 53;
+
+    if(dataForSave.skala.a > 50){
+      console.log("ÜBER 50");
+    }
+    else{
+      console.log("KLEINER 50");
+    }
+
     await fS.Character.show(characters.Principal, characters.Principal.pose.happy, fS.positions.bottomcenter);
     await fS.Speech.show();
     await fS.update(1);

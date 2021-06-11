@@ -65,7 +65,10 @@ var Template;
         characterToSave: {
             name: "charToSave",
         },
-        punkte: 0
+        punkte: 0,
+        skala: {
+            a: 0
+        }
     };
     Template.items = {
         Image: {
@@ -93,8 +96,10 @@ var Template;
             { scene: Template.Scene, name: "Scene" },
             { scene: Template.Scene2, name: "Scene2" }
         ];
+        let uiElement = document.querySelector('[type="interface"]');
+        Template.dataForSave.skala = Template.fS.Progress.setDataInterface(Template.dataForSave.skala, uiElement);
         //Progress Daten setzten
-        Template.fS.Progress.setData(Template.dataForSave);
+        //fS.Progress.setData(dataForSave);
         // start the sequence
         Template.fS.Progress.go(scenes);
     }
@@ -132,6 +137,14 @@ var Template;
         //
         await Template.fS.Location.show(Template.location.assembly_hall);
         await Template.fS.update(1);
+        //Skala
+        Template.dataForSave.skala.a += 53;
+        if (Template.dataForSave.skala.a > 50) {
+            console.log("ÜBER 50");
+        }
+        else {
+            console.log("KLEINER 50");
+        }
         await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.happy, Template.fS.positions.bottomcenter);
         await Template.fS.Speech.show();
         await Template.fS.update(1);

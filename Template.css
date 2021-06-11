@@ -60,3 +60,7 @@ dialog{
   color: white;
   font-size: 40px;
 }
+
+meter::-webkit-meter-optimum-value{
+  background-color: aqua;
+}

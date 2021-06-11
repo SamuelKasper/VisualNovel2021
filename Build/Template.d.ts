@@ -56,6 +56,9 @@ declare namespace Template {
             name: string;
         };
         punkte: number;
+        skala: {
+            a: number;
+        };
     };
     let items: {
         Image: {
