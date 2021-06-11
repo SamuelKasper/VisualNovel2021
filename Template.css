@@ -63,9 +63,15 @@ dialog{
 
 meter::-webkit-meter-optimum-value{
   background-color: aqua;
+  color: red;
 }
 
 #skala{
+  position: absolute;
+  top: 20px;
+}
+
+.gameMenu{
   position: absolute;
   top: 20px;
 }

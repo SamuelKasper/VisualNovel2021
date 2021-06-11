@@ -90,8 +90,64 @@ var Template;
                 break;
         }
     }
+    //Menu
+    let inGameMenu = {
+        save: "Save",
+        load: "Load",
+        close: "Close",
+        volUp: "Volume Up",
+        volDown: "Volume Down",
+        credits: "Credits",
+        about: "About"
+    };
+    //create Menu with Buttons
+    let gameMenu;
+    async function MenuStuff(_option) {
+        console.log(_option);
+        switch (_option) {
+            case inGameMenu.save:
+                await Template.fS.Progress.save();
+                break;
+            case inGameMenu.load:
+                await Template.fS.Progress.load();
+                break;
+            case inGameMenu.close:
+                //Schließt das Menü
+                gameMenu.close();
+                break;
+            case inGameMenu.volUp:
+                volumeUp();
+                break;
+            case inGameMenu.volDown:
+                volumeDown();
+                break;
+            case inGameMenu.credits:
+                break;
+            case inGameMenu.about:
+                break;
+        }
+    }
+    //Menu functions
+    let volume = 1;
+    function volumeUp() {
+        if (volume < 100) {
+            volume += 0.1;
+            Template.fS.Sound.setVolume(Template.sound.backgroundTheme, volume);
+        }
+    }
+    Template.volumeUp = volumeUp;
+    function volumeDown() {
+        if (volume > 0) {
+            volume -= 0.1;
+            Template.fS.Sound.setVolume(Template.sound.backgroundTheme, volume);
+        }
+    }
+    Template.volumeDown = volumeDown;
     window.addEventListener("load", start);
     function start(_event) {
+        //Menu
+        gameMenu = Template.fS.Menu.create(inGameMenu, MenuStuff, "gameMenu");
+        //Szenen
         let scenes = [
             { scene: Template.Scene, name: "Scene" },
             { scene: Template.Scene2, name: "Scene2" }
