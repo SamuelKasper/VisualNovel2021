@@ -34,7 +34,7 @@ namespace Template {
     await fS.update(1);
 
     //Skala
-    dataForSave.skala.a += 53;
+    dataForSave.skala.a += 20;
 
     if(dataForSave.skala.a > 50){
       console.log("ÜBER 50");

@@ -110,8 +110,8 @@ namespace Template {
       { scene: Scene2, name: "Scene2" }
     ];
 
-    let uiElement: HTMLElement = document.querySelector('[type="interface"]');
-    dataForSave.skala = fS.Progress.setDataInterface(dataForSave.skala, uiElement);
+    let uiElement: HTMLElement = document.querySelector('[type=interface]');
+    dataForSave.skala = fS.Progress.setData(dataForSave.skala, uiElement);
 
     //Progress Daten setzten
     //fS.Progress.setData(dataForSave);

@@ -64,3 +64,8 @@ dialog{
 meter::-webkit-meter-optimum-value{
   background-color: aqua;
 }
+
+#skala{
+  position: absolute;
+  top: 20px;
+}

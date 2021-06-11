@@ -96,8 +96,8 @@ var Template;
             { scene: Template.Scene, name: "Scene" },
             { scene: Template.Scene2, name: "Scene2" }
         ];
-        let uiElement = document.querySelector('[type="interface"]');
-        Template.dataForSave.skala = Template.fS.Progress.setDataInterface(Template.dataForSave.skala, uiElement);
+        let uiElement = document.querySelector('[type=interface]');
+        Template.dataForSave.skala = Template.fS.Progress.setData(Template.dataForSave.skala, uiElement);
         //Progress Daten setzten
         //fS.Progress.setData(dataForSave);
         // start the sequence
@@ -138,7 +138,7 @@ var Template;
         await Template.fS.Location.show(Template.location.assembly_hall);
         await Template.fS.update(1);
         //Skala
-        Template.dataForSave.skala.a += 53;
+        Template.dataForSave.skala.a += 20;
         if (Template.dataForSave.skala.a > 50) {
             console.log("ÜBER 50");
         }
