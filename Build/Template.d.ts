@@ -69,6 +69,7 @@ declare namespace Template {
     };
     function volumeUp(): void;
     function volumeDown(): void;
+    function animation(): fS.AnimationDefinition;
 }
 declare namespace Template {
     function Scene(): fS.SceneReturn;

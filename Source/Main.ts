@@ -159,6 +159,17 @@ namespace Template {
   }
 
 
+//Animation exported
+export function animation(): fS.AnimationDefinition{
+  return{
+      start: { translation: fS.positions.bottomleft, rotation: -20, scaling: new fS.Position(0.5, 1.5), color: fS.Color.CSS("blue", 1) },
+      end: { translation: fS.positions.bottomright, rotation: 20, scaling: new fS.Position(1.5, 0.5), color: fS.Color.CSS("red", 1) },
+      duration: 1,
+      playmode: fS.ANIMATION_PLAYMODE.REVERSELOOP
+  };
+}
+
+
   window.addEventListener("load", start);
   function start(_event: Event): void {
 

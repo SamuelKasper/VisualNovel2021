@@ -143,6 +143,16 @@ var Template;
         }
     }
     Template.volumeDown = volumeDown;
+    //Animation exported
+    function animation() {
+        return {
+            start: { translation: Template.fS.positions.bottomleft, rotation: -20, scaling: new Template.fS.Position(0.5, 1.5), color: Template.fS.Color.CSS("blue", 1) },
+            end: { translation: Template.fS.positions.bottomright, rotation: 20, scaling: new Template.fS.Position(1.5, 0.5), color: Template.fS.Color.CSS("red", 1) },
+            duration: 1,
+            playmode: Template.fS.ANIMATION_PLAYMODE.REVERSELOOP
+        };
+    }
+    Template.animation = animation;
     window.addEventListener("load", start);
     function start(_event) {
         //Menu
@@ -263,14 +273,14 @@ var Template;
         await Template.fS.update(1);
         await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0004);
         await Template.fS.Speech.tell(Template.characters.Principal, "Animation STARTET");
-        //Animation
-        let moveLeftAnimation = {
-            start: { translation: Template.fS.positions.bottomleft, rotation: -20, scaling: new Template.fS.Position(0.5, 1.5), color: Template.fS.Color.CSS("blue", 1) },
-            end: { translation: Template.fS.positions.bottomright, rotation: 20, scaling: new Template.fS.Position(1.5, 0.5), color: Template.fS.Color.CSS("red", 1) },
-            duration: 1,
-            playmode: Template.fS.ANIMATION_PLAYMODE.REVERSELOOP
-        };
-        await Template.fS.Character.animate(Template.characters.Principal, Template.characters.Principal.pose.happy, moveLeftAnimation);
+        /*Animation
+        let moveLeftAnimation: fS.AnimationDefinition = {
+          start: { translation: fS.positions.bottomleft, rotation: -20, scaling: new fS.Position(0.5, 1.5), color: fS.Color.CSS("blue", 1) },
+          end: { translation: fS.positions.bottomright, rotation: 20, scaling: new fS.Position(1.5, 0.5), color: fS.Color.CSS("red", 1) },
+          duration: 1,
+          playmode: fS.ANIMATION_PLAYMODE.REVERSELOOP
+        };*/
+        await Template.fS.Character.animate(Template.characters.Principal, Template.characters.Principal.pose.happy, Template.animation());
         await Template.fS.update(2);
         //Animation End
         await Template.fS.Speech.tell(Template.characters.Principal, text.Teacher.T0006);

@@ -114,15 +114,15 @@ namespace Template {
     await fS.Speech.tell(characters.Principal, text.Teacher.T0004);
     await fS.Speech.tell(characters.Principal, "Animation STARTET");
 
-    //Animation
+    /*Animation
     let moveLeftAnimation: fS.AnimationDefinition = {
       start: { translation: fS.positions.bottomleft, rotation: -20, scaling: new fS.Position(0.5, 1.5), color: fS.Color.CSS("blue", 1) },
       end: { translation: fS.positions.bottomright, rotation: 20, scaling: new fS.Position(1.5, 0.5), color: fS.Color.CSS("red", 1) },
       duration: 1,
       playmode: fS.ANIMATION_PLAYMODE.REVERSELOOP
-    };
+    };*/
 
-    await fS.Character.animate(characters.Principal, characters.Principal.pose.happy, moveLeftAnimation);
+    await fS.Character.animate(characters.Principal, characters.Principal.pose.happy, animation());
     await fS.update(2);
     //Animation End
     
