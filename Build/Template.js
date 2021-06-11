@@ -211,6 +211,14 @@ var Template;
         else {
             console.log("KLEINER 50");
         }
+        //Inventar
+        Template.fS.Inventory.add(Template.items.Image);
+        await Template.fS.Inventory.open();
+        /*
+        document.getElementById("Foto").onclick = function(){
+          alert("TEST");
+          fS.Inventory.add(items.Image);
+        };*/
         await Template.fS.Character.show(Template.characters.Principal, Template.characters.Principal.pose.happy, Template.fS.positions.bottomcenter);
         await Template.fS.Speech.show();
         await Template.fS.update(1);
@@ -320,9 +328,6 @@ var Template;
         //Namens Eingabe Feld
         //name eingeben und in Progress speichern
         //dataForSave.characterToSave.name = await fS.Speech.getInput();
-        //Inventar
-        Template.fS.Inventory.add(Template.items.Image);
-        await Template.fS.Inventory.open();
     }
     Template.Scene2 = Scene2;
 })(Template || (Template = {}));

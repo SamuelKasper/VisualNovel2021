@@ -43,6 +43,18 @@ namespace Template {
       console.log("KLEINER 50");
     }
 
+
+  //Inventar
+  fS.Inventory.add(items.Image);
+  await fS.Inventory.open();
+  /*
+  document.getElementById("Foto").onclick = function(){
+    alert("TEST");
+    fS.Inventory.add(items.Image);
+  };*/
+  
+
+
     await fS.Character.show(characters.Principal, characters.Principal.pose.happy, fS.positions.bottomcenter);
     await fS.Speech.show();
     await fS.update(1);

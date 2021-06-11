@@ -28,9 +28,7 @@ namespace Template {
 
 
       
-      //Inventar
-      fS.Inventory.add(items.Image);
-      await fS.Inventory.open();
+    
       
 
 
